@@ -149,7 +149,8 @@ SRR8856724_2.fastq.gz > WP312.sam
 **samtools: fixmate, sort e index (~min)**
 
 ```bash
-time samtools fixmate WP312.sam WP312.bam
+# -@ numero de cores utilizados
+time samtools fixmate -@10 WP312.sam WP312.bam
 ```
 
 ```bash
