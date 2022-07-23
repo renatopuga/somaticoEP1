@@ -14,7 +14,8 @@
          brew install sratoolkit
          
          # rodar validate
-         vdb-config
+         # aperte a tecla X para sair
+         vdb-config --interactive
          ```
 
       2. ```bash
@@ -28,12 +29,19 @@
 
          ```bash
          # download do binário ubuntu 64bits
+          %%bash
           wget -c https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-ubuntu64.tar.gz
+          
           # -z unzip
           # -x extract
           # -v verbose
           # -f force?
           tar -zxvf sratoolkit.3.0.0-ubuntu64.tar.gz
+          
+          ./sratoolkit.3.0.0-ubuntu64/bin/vdb-config
+          
+          ./sratoolkit.3.0.0-ubuntu64/bin/fastq-dump -I --gzip --split-files SRR8856724
+            
          ```
 
          
