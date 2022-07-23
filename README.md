@@ -137,8 +137,13 @@
 
 6. **BWA-mem** para fazer o alinhamento (FASTQ -> BAM)
 
-```
-Conto com vocês!
+```bash
+NOME=WP312; Biblioteca=Nextera; Plataforma=illumina;
+
+bwa mem -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" \
+chr9.fa \
+SRR8856724_1.fastq.gz \
+SRR8856724_2.fastq.gz > WP312.sam
 ```
 
 
