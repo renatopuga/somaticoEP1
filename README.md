@@ -63,6 +63,14 @@
    ```bash
    brew install bwa 
    ```
+   
+   2. Google Colab
+   
+   Abri um CODE
+   
+   ```bash
+   !sudo apt-get install bwa
+   ```
 
 4. **BWA index do arquivo chr9.fa.gz**
 
