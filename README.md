@@ -1,5 +1,4 @@
-# somaticoEP1
-Exercício Somático EP1
+# Pipeline somático: Exercício 1
 
 
 1. **O arquivo no NCBI da amostra WP312 (tumor)**
@@ -12,7 +11,10 @@ Exercício Somático EP1
 
       1. ```bash
          # instalar utilizando o brew install (gitpod)
-          brew install sratoolkit
+         brew install sratoolkit
+         
+         # rodar validate
+         vdb-config
          ```
 
       2. ```bash
@@ -26,8 +28,7 @@ Exercício Somático EP1
 
          ```bash
          # download do binário ubuntu 64bits
-          wget -c https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-
-          ubuntu64.tar.gz
+          wget -c https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-ubuntu64.tar.gz
           # -z unzip
           # -x extract
           # -v verbose
