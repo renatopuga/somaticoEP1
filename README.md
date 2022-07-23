@@ -168,7 +168,7 @@ time samtools index WP312_sorted.bam
 
 ```bash
 # abordagem de target sequencing utilizamos o rmdup para remover duplicata de PCR
-time samtools rmdup WP312_sorted.bam
+!samtools rmdup WP312_sorted.bam WP312_sorted_rmdup.bam
 ```
 
 ```bash
