@@ -154,11 +154,23 @@ time samtools fixmate -@10 WP312.sam WP312.bam
 ```
 
 ```bash
+# ordenando o arquivo fixmate
 time samtools sort -O bam -@6 -m2G -o WP312_sorted.bam WP312.bam
 ```
 
 ```bash
+# indexando o arquivo BAM ordenado (sort)
 time samtools index WP312_sorted.bam
+```
+
+```bash
+# abordagem de target sequencing utilizamos o rmdup para remover duplicata de PCR
+time samtools rmdup WP312_sorted.bam
+```
+
+```bash
+# indexando o arquivo BAM rmdup
+samtools index WP312_sorted_rmdup.bam 
 ```
 
 
