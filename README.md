@@ -181,10 +181,10 @@ time samtools index WP312_sorted_rmdup.bam
 **Alternativa: combinar com pipes: bwa + samtools view e sort**
 
 ```bash
-bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" chr9.fa SRR8856724_1.fastq.gz SRR8856724_2.fastq.gz | samtools view -F4 -Sbu -@2 - | samtools sort -m4G -@2 -o WP312.sorted.bam
+bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" chr9.fa SRR8856724_1.fastq.gz SRR8856724_2.fastq.gz | samtools view -F4 -Sbu -@2 - | samtools sort -m4G -@2 -o WP312_sorted.bam
 ```
 
-**NOTA: se utilizar a opção alternativa, não esquece de rodar o samtools para as etapas: rmdup e index (do rmdup).**
+**NOTA: se utilizar a opção alternativa, não esquecer de rodar o samtools para as etapas: rmdup e index (do rmdup).**
 
 
 
