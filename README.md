@@ -48,9 +48,32 @@
 
 2. **AS Referências do Genoma hg38 (FASTA, VCFs)**
 
-   1. Os arquivos de Referência: **Panel of Normal (PoN), Gnomad AF e Exactly common:**
+   1. Os arquivos de Referência: **Panel of Normal (PoN), Gnomad AF e Exac common:**
 
       1.  https://console.cloud.google.com/storage/browser/gatk-best-practices/somatic-hg38?project=broad-dsde-outreach
+
+      ```bash
+      wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/af-only-gnomad.hg38.vcf.gz
+      ```
+
+      ```bash
+      wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/af-only-gnomad.hg38.vcf.gz.tbi
+      ```
+
+      ```bash
+      wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/1000g_pon.hg38.vcf.gz
+      https://storage.googleapis.com/gatk-best-practices/somatic-hg38/1000g_pon.hg38.vcf.gz.tbi
+      ```
+
+      ```bash
+      wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/small_exac_common_3.hg38.vcf.gz
+      ```
+
+      ```bash
+      wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/small_exac_common_3.hg38.vcf.gz.tbi
+      ```
+
+      
 
    2. Arquivo no formato FASTA do genoma humano hg38
 
@@ -115,11 +138,7 @@
 6. **BWA-mem** para fazer o alinhamento (FASTQ -> BAM)
 
 ```
-NOME=WP312; Biblioteca=Nextera; Plataforma=illumina 
-bwa mem -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" \
-chr9.fa \
-SRR8856724_1.fastq.gz \
-SRR8856724_2.fastq.gz > WP312.sam
+Conto com vocês!
 ```
 
 
