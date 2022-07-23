@@ -19,10 +19,10 @@
          ```
 
       2. ```bash
-          # fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
-          # -I: --readids da amostra
-          # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
-          fastq-dump --gzip --split-files SRR8856724
+         # fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
+         # -I: --readids da amostra
+         # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
+         fastq-dump --gzip --split-files SRR8856724
          ```
 
       3. Google Colab sratoolkit (modo alternativo)
@@ -71,11 +71,11 @@
    ```bash
    brew install bwa 
    ```
-   
+
    2. Google Colab
-   
+
    Abri um CODE
-   
+
    ```bash
    !sudo apt-get install bwa
    ```
@@ -90,7 +90,29 @@
    bwa index chr9.fa
    ```
 
-5. **BWA-mem** para fazer o alinhamento (FASTQ -> BAM)
+5. **Samtools faidx**
+
+   1. Install Gitpod
+
+   ```bash
+   brew install samtools 
+   ```
+
+   2. Install Google Collar
+
+   ```bash
+   !sudo apt-get install samtools
+   ```
+
+   3. Samtools faidx chr9.fa
+
+   ```bash
+   samtools faidx chr9.fa
+   ```
+
+   
+
+6. **BWA-mem** para fazer o alinhamento (FASTQ -> BAM)
 
 ```
 Conto com vocês!
