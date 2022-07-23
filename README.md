@@ -21,7 +21,7 @@
           # fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
           # -I: --readids da amostra
           # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
-          fastq-dump -I --split-files SRR8856724
+          fastq-dump -I --gzip --split-files SRR8856724
          ```
 
       3. Google Colab sratoolkit (modo alternativo)
