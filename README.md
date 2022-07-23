@@ -241,23 +241,42 @@ awk -F "\t" '{if($4>20){print}}' \
 
 
 
-7. **GATK4 instalação** (like Germinativo)
+7. **GATK4 instalação** (MuTect2 com PoN)
 
-- Download
+   
+
+**Download**
 
 ```
 wget -c https://github.com/broadinstitute/gatk/releases/download/4.2.2.0/gatk-4.2.2.0.zip
 ```
 
-- Descompactar
+**Descompactar**
 
-```
+```bash
 unzip gatk-4.2.2.0.zip 
 ```
 
+**Gerar arquivo .dict**
 
+```bash
+./gatk-4.2.2.0/gatk CreateSequenceDictionary -R chr9.fa -O chr9.dict
+```
 
+**Gerar interval_list do chr9**
 
+```bash
+./gatk-4.2.2.0/gatk ScatterIntervalsByNs -R chr9.fa -O chr9.interval_list -OT ACGT
+```
+
+**Converter Bed para Interval_list**
+
+```bash
+./gatk-4.2.2.0/gatk BedToIntervalList \
+-I /WP312_coverageBed30x.bed \
+-O WP312_coverageBed30x.interval_list \
+-SD chr9.dict
+```
 
 ## Anexo
 
