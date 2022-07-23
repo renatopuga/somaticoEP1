@@ -278,6 +278,50 @@ unzip gatk-4.2.2.0.zip
 
 
 
+**GATK4 - CalculateContamination**
+
+```bash
+./gatk-4.2.2.0/gatk GetPileupSummaries \
+	-I WP312_sorted_rmdup.bam  \
+	-V af-only-gnomad.hg38.vcf.gz \
+	-L chr9.interval_list \
+	-O WP312.table
+```
+
+```bash
+/gatk-4.2.2.0/gatk CalculateContamination \
+	-I WP312.table\
+	-O WP312.contamination.table
+```
+
+
+
+**GATK4 - MuTect2** Call
+
+```bash
+./gatk-4.2.2.0/gatk Mutect2 \
+  -R chr9.fa \
+  -I WP312_sorted_rmdup.bam \
+  --germline-resource af-only-gnomad.hg38.vcf.gz  \
+  --panel-of-normals 1000g_pon.hg38.vcf.gz \
+  -L WP312_coverageBed30x.interval_list \
+  -O WP312.somatic.pon.vcf.gz
+```
+
+
+
+**GATK4 - MuTect2** FilterMutectCalls
+
+```bash
+./gatk-4.2.2.0/gatk FilterMutectCalls \
+	-R chr9.fa \
+	-V WP312.somatic.pon.vcf.gz \
+	--contamination-table WP312.contamination.table \
+	-O WP312.filtered.pon.vcf.gz
+```
+
+
+
 ## Anexo
 
 Como baixar um arquivo do Short Read Archive (SRA)?
