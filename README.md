@@ -140,10 +140,32 @@
 ```bash
 NOME=WP312; Biblioteca=Nextera; Plataforma=illumina;
 
-bwa mem -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" \
+bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" \
 chr9.fa \
 SRR8856724_1.fastq.gz \
 SRR8856724_2.fastq.gz > WP312.sam
+```
+
+**samtools: fixmate, sort e index (~min)**
+
+```bash
+time samtools fixmate WP312.sam WP312.bam
+```
+
+```bash
+time samtools sort -O bam -o WP312_sorted.bam WP312.bam
+```
+
+```bash
+time samtools index WP312_sorted.bam
+```
+
+
+
+**Alternativa: combinar com pipes: bwa + samtools view e sort**
+
+```bash
+bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" chr9.fa SRR8856724_1.fastq.gz SRR8856724_2.fastq.gz | samtools view -F4 -Sbu -@2 - | samtools sort -m4G -@2 -o WP312.sorted.bam
 ```
 
 
