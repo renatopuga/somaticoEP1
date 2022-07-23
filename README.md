@@ -124,7 +124,7 @@
    brew install samtools 
    ```
 
-   2. Install Google Collar
+   2. Install Google Colab
 
    ```bash
    !sudo apt-get install samtools
@@ -168,12 +168,12 @@ time samtools index WP312_sorted.bam
 
 ```bash
 # abordagem de target sequencing utilizamos o rmdup para remover duplicata de PCR
-!samtools rmdup WP312_sorted.bam WP312_sorted_rmdup.bam
+time samtools rmdup WP312_sorted.bam WP312_sorted_rmdup.bam
 ```
 
 ```bash
 # indexando o arquivo BAM rmdup
-samtools index WP312_sorted_rmdup.bam 
+time samtools index WP312_sorted_rmdup.bam 
 ```
 
 
