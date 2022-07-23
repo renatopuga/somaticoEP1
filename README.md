@@ -189,6 +189,24 @@ bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" ch
 
 
 
+**Instalação do bedtools**
+
+Gitpod
+
+```bash
+brew install bedtoools
+```
+
+Google Colab
+
+```bash
+!sudo apt-get install bedtools
+```
+
+
+
+**Gerando BED do arquivo BAM**
+
 ```bash
 bedtools bamtobed -i WP312_sorted_rmdup.bam > WP312_sorted_rmdup.bed
 ```
@@ -200,6 +218,18 @@ bedtools merge -i WP312_sorted_rmdup.bed > WP312_sorted_rmdup_merged.bed
 ```bash
 bedtools sort -i WP312_sorted_rmdup_merged.bed > WP312_sorted_rmdup_merged_sorted.bed
 ```
+
+
+
+```bash
+bedtools coverage -a WP312_sorted_rmdup_merged_sorted.bed \
+-b WP312_sorted_rmdup.bam -mean \
+> WP312_coverageBed.bed
+```
+
+
+
+
 
 
 
