@@ -181,9 +181,29 @@ samtools index WP312_sorted_rmdup.bam
 bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" chr9.fa SRR8856724_1.fastq.gz SRR8856724_2.fastq.gz | samtools view -F4 -Sbu -@2 - | samtools sort -m4G -@2 -o WP312.sorted.bam
 ```
 
+**NOTA: se utilizar a opção alternativa, não esquece de rodar o samtools para as etapas: rmdup e index (do rmdup).**
 
 
-6. **GATK4 instalação** (like Germinativo)
+
+6. **Cobertura - make BED files**
+
+
+
+```bash
+bedtools bamtobed -i WP312_sorted_rmdup.bam > WP312_sorted_rmdup.bed
+```
+
+```bash
+bedtools merge -i WP312_sorted_rmdup.bed > WP312_sorted_rmdup_merged.bed
+```
+
+```bash
+bedtools sort -i WP312_sorted_rmdup_merged.bed > WP312_sorted_rmdup_merged_sorted.bed
+```
+
+
+
+7. **GATK4 instalação** (like Germinativo)
 
 - Download
 
