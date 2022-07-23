@@ -40,7 +40,7 @@
           
           ./sratoolkit.3.0.0-ubuntu64/bin/vdb-config
           
-          ./sratoolkit.3.0.0-ubuntu64/bin/fastq-dump -I --gzip --split-files SRR8856724
+          ./sratoolkit.3.0.0-ubuntu64/bin/fastq-dump --gzip --split-files SRR8856724
             
          ```
 
