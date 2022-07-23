@@ -154,7 +154,7 @@ time samtools fixmate -@10 WP312.sam WP312.bam
 ```
 
 ```bash
-time samtools sort -O bam -o WP312_sorted.bam WP312.bam
+time samtools sort -O bam -@6 -m2G -o WP312_sorted.bam WP312.bam
 ```
 
 ```bash
