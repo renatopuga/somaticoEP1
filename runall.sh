@@ -3,7 +3,8 @@ brew install sratoolkit
 
 # rodar validate
 # aperte a tecla X para sair
-vdb-config
+# vdb-config
+echo "Aexyo" | vdb-config -i
 
 # fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
 # -I: --readids da amostra
