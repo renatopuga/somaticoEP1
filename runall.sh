@@ -21,10 +21,6 @@ wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/1000g_po
 
 wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/1000g_pon.hg38.vcf.gz.tbi
 
-wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/small_exac_common_3.hg38.vcf.gz
-
-wget -c https://storage.googleapis.com/gatk-best-practices/somatic-hg38/small_exac_common_3.hg38.vcf.gz.tbi
-
 # Arquivo no formato FASTA do genoma humano hg38
 # Diretório Download UCSC hg38: https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
 # chr9.fa.gz: https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr9.fa.gz
@@ -60,14 +56,23 @@ rm -f SRR8856724_1.fastq.gz SRR8856724_2.fastq.gz
 # -@ numero de cores utilizados
 time samtools fixmate -@10 WP312.sam WP312.bam
 
+# delete dados intermediarios
+rm -f WP312.sam
+
 # ordenando o arquivo fixmate
 time samtools sort -O bam -@6 -m2G -o WP312_sorted.bam WP312.bam
+
+# delete dados intermediarios
+rm -f WP312.bam
 
 # indexando o arquivo BAM ordenado (sort)
 time samtools index WP312_sorted.bam
 
 # abordagem de target sequencing utilizamos o rmdup para remover duplicata de PCR
 time samtools rmdup WP312_sorted.bam WP312_sorted_rmdup.bam
+
+# delete dados intermediarios
+rm -f WP312_sorted.bam
 
 # indexando o arquivo BAM rmdup
 time samtools index WP312_sorted_rmdup.bam 
