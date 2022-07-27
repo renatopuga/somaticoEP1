@@ -27,9 +27,6 @@
          # --threads 4: paraleliza em 4 partes o download
          # --gzip: fastq compactados
          # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
-         time parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip# fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
-         # -I: --readids da amostra
-         # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
          time parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip
          ```
 
