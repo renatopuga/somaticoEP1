@@ -43,9 +43,11 @@
           # -f force?
           tar -zxvf sratoolkit.3.0.0-ubuntu64.tar.gz
           
+          # validate
           ./sratoolkit.3.0.0-ubuntu64/bin/vdb-config
           
-          ./sratoolkit.3.0.0-ubuntu64/bin/fastq-dump --gzip --split-files SRR8856724
+          # downlaod parallel
+          parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip
             
          ```
 
