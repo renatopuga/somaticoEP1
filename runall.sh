@@ -1,6 +1,10 @@
 # instalar utilizando o brew install (gitpod)
 brew install sratoolkit
 
+# parallel fastq-dump
+# https://github.com/rvalieris/parallel-fastq-dump
+pip install parallel-fastq-dump
+
 # rodar validate
 # aperte a tecla X para sair
 # vdb-config
@@ -9,7 +13,7 @@ echo "Aexyo" | vdb-config -i
 # fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
 # -I: --readids da amostra
 # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
-fastq-dump --gzip --split-files SRR8856724
+time parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip
 
 # AS Referências do Genoma hg38 (FASTA, VCFs)
 # Os arquivos de Referência: Panel of Normal (PoN), Gnomad AF e Exac common:
