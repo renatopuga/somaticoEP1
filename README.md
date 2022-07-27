@@ -13,16 +13,24 @@
          # instalar utilizando o brew install (gitpod)
          brew install sratoolkit
          
+         # parallel fastq-dump
+         # https://github.com/rvalieris/parallel-fastq-dump
+         pip install parallel-fastq-dump
+         
          # rodar validate
-         # aperte a tecla X para sair
-         vdb-config --interactive
+         echo "Aexyo" | vdb-config -i
          ```
 
       2. ```bash
          # fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
+         # --sra-id: SRR 
+         # --threads 4: paraleliza em 4 partes o download
+         # --gzip: fastq compactados
+         # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
+         time parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip# fastq-dump: comando que faz o download do arquivo utilizando o SRR ID da amostra
          # -I: --readids da amostra
          # --split-files: ele vai separar os arquivos fastq em 1 e 2 (paired)
-         fastq-dump --gzip --split-files SRR8856724
+         time parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip
          ```
 
       3. Google Colab sratoolkit (modo alternativo)
@@ -329,5 +337,6 @@ unzip gatk-4.2.2.0.zip
 
 Como baixar um arquivo do Short Read Archive (SRA)?
 
-- Fonte: https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
-- Fonte 2: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
+- Documentação SRA-ToolKit: https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
+- fast-dump: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
+- fastq-dump parallel: https://github.com/rvalieris/parallel-fastq-dump
