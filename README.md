@@ -334,7 +334,7 @@ unzip gatk-4.2.2.0.zip
 ```
 
 
-# somaticoEP1 - LifOver
+# somaticoEP1 - LiftOverVCF
 
 
 Download dos arquivos VCFs da versão hg19 da análise antiga do Projeto LMA Brasil:
