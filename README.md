@@ -32,7 +32,7 @@
 
       3. Google Colab sratoolkit (modo alternativo)
 
-         ```bash
+```bash
          # download do binário ubuntu 64bits
           %%bash
           wget -c https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-ubuntu64.tar.gz
@@ -51,9 +51,6 @@
 	  
           # downlaod parallel
 	  parallel-fastq-dump --sra-id SRR8856724 --threads 6 --outdir ./ --split-files --gzip --tmpdir /content/
-            
-         ```
-
         
 
 2. **AS Referências do Genoma hg38 (FASTA, VCFs)**
