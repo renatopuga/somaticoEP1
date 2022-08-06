@@ -334,9 +334,6 @@ unzip gatk-4.2.2.0.zip
 # somaticoEP1 - LifOver
 
 
-
-
-
 Download dos arquivos VCFs da versão hg19 da análise antiga do Projeto LMA Brasil:
 
 >  https://drive.google.com/drive/folders/1m2qmd0ca2Nwb7qcK58ER0zC8-1_9uAiE?usp=sharing
@@ -479,13 +476,86 @@ wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 # lembre que o VCF tem que ser o com chr
 ./gatk-4.2.2.0/gatk LiftoverVcf \
 -I WP312.filtered.chr.vcf \
--O liftOver_WP312_hg19Tohg38.vcf \
+-O liftOver_WP312_hg19Tohg38.vcf.gz \
 --CHAIN hg19ToHg38.over.chain \
 --REJECT liftOver_Reject_WP312_hg19Tohg38.vcf \
 -R hg38.fa
 ```
 
 ---
+
+
+
+## vcftools (vcf-compare)
+
+Vamos pegar os dois VCFs que estão na mesma versão do hg38 e comparar o número de variantes e a % de match entre os arquivos.
+
+> Nota: a comparação vai ser apenas com base nas Referências que derem match (tem que estar no dois arquivos vcf).
+
+
+
+**Gitpod install**
+
+```bash
+brew install vcftools
+```
+
+**Colab install**
+
+```bash
+!sudo apt-get install vctfools
+```
+
+
+
+---
+
+**Nota:** Para utilizadr o `vcf-compare`precisamos que os arquivos VCFs estejam `bgzip` e com o index do`tabix`
+
+---
+
+
+
+Fiz o download do arquivo `WP312.filtered.pon.vcf.gz` que está o compartilhamento do Google Drive e coloquei no Gtipod dentro de um diretório chamado` hg38-vcf-EP1`
+
+```bash
+mkdir hg38-vcf-EP1
+```
+
+
+
+**Rodar o vcf-compare**
+
+```bash
+# vcf-compare file1.vcf file2.vcf ... fileN.vcf
+# liftOver_WP312_hg19Tohg38.vcf.gz: arquivo que convertemos do hg19 para hg38
+# hg38-vcf-EP1/WP312.filtered.pon.vcf.gz: Arquivo da aula EP01 (primeira parte)
+vcf-compare liftOver_WP312_hg19Tohg38.vcf.gz hg38-vcf-EP1/WP312.filtered.pon.vcf.gz
+```
+
+
+
+**Resultado vcf-compare**
+
+```bash
+#VN 'Venn-Diagram Numbers'. Use `grep ^VN | cut -f 2-` to extract this part.
+#VN The columns are: 
+#VN        1  .. number of sites unique to this particular combination of files
+#VN        2- .. combination of files and space-separated number, a fraction of sites in the file
+VN      166     hg38-vcf-EP1/WP312.filtered.pon.vcf.gz (0.2%)   liftOver_WP312_hg19Tohg38.vcf.gz (1.0%)
+VN      16971   liftOver_WP312_hg19Tohg38.vcf.gz (99.0%)
+VN      78215   hg38-vcf-EP1/WP312.filtered.pon.vcf.gz (99.8%)
+
+#SN Summary Numbers. Use `grep ^SN | cut -f 2-` to extract this part.
+SN      Number of REF matches:  165
+SN      Number of ALT matches:  163
+SN      Number of REF mismatches:       1
+SN      Number of ALT mismatches:       2
+SN      Number of samples in GT comparison:     0
+
+# Number of sites lost due to grouping (e.g. duplicate sites): lost, %lost, read, reported, file
+SN      Number of lost sites:   2       0.0%    17139   17137   liftOver_WP312_hg19Tohg38.vcf.gz
+```
 
 
 
@@ -499,3 +569,4 @@ wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 - liftOver Doc - https://genome.ucsc.edu/goldenPath/help/hgTracksHelp.html#Liftover
 - hg38ToHg19 (hg38ToHg19.over.chain.gz) - http://hgdownload.soe.ucsc.edu/goldenPath/hg38/liftOver/
 - hg19ToHg38 (hg19ToHg38.over.chain.gz) - https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver
+- Vcftools - https://vcftools.github.io/index.html
