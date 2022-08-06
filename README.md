@@ -302,7 +302,7 @@ unzip gatk-4.2.2.0.zip
 ```
 
 ```bash
-./gatk-4.2.2.0/gatk CalculateContamination \ 
+./gatk-4.2.2.0/gatk CalculateContamination \
 -I WP312.table \
 -O WP312.contamination.table
 ```
