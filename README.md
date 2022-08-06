@@ -489,12 +489,7 @@ wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 
 
 
-
-
-
-## Anexo
-
-Como baixar um arquivo do Short Read Archive (SRA)?
+## Referências
 
 - Documentação SRA-ToolKit: https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
 - fast-dump: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
