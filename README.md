@@ -45,7 +45,7 @@
           
           # validate
           ./sratoolkit.3.0.0-ubuntu64/bin/vdb-config
-          
+	  
 	  # adicionando o diretorio dos programas no path
 	  export PATH=$PATH:/content/sratoolkit.3.0.0-ubuntu64/bin/
 	  
