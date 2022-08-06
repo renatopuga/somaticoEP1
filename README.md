@@ -50,8 +50,15 @@
           parallel-fastq-dump --sra-id SRR8856724 --threads 4 --outdir ./ --split-files --gzip
             
          ```
-
-         
+	 
+	**parallel-fastq-dump** (Google Colab)
+	 
+	 ```bash
+	 %%bash
+	  export PATH=$PATH:/content/sratoolkit.3.0.0-ubuntu64/bin/
+	  parallel-fastq-dump --sra-id SRR8856724 --threads 6 --outdir ./ --split-files --gzip --tmpdir /content/
+	 ```
+        
 
 2. **AS Referências do Genoma hg38 (FASTA, VCFs)**
 
