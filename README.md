@@ -207,7 +207,7 @@ bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" ch
 Gitpod
 
 ```bash
-brew install bedtoools
+brew install bedtools
 ```
 
 Google Colab
