@@ -335,6 +335,8 @@ unzip gatk-4.2.2.0.zip
 
 
 
+
+
 Download dos arquivos VCFs da versão hg19 da análise antiga do Projeto LMA Brasil:
 
 >  https://drive.google.com/drive/folders/1m2qmd0ca2Nwb7qcK58ER0zC8-1_9uAiE?usp=sharing
@@ -432,18 +434,59 @@ Converter as posição do hg19 para hg38 `hg19ToHg38.over.chain.gz`
 wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz
 ```
 
+```bash
+gunzip hg19ToHg38.over.chain.gz 
+```
 
 
-### LiftoverVcf (Picard) 
+
+---
+
+**NOTA**: Nos arquivos VCFs antigos do projeto LMA Brasil, a descrição do nome da referência não tem `chr` apenas o número ou letra do cromossomo humano, isso pode causar conflito na hora do GATK verificar se a sua referência é igual a referência do arquivo VCF.
+
+1. Vamos adicionar o caracter `chr` no arquivo VCF antigo e salvar um novo.
 
 ```bash
- java -jar picard.jar LiftoverVcf \
-     I=input.vcf \
-     O=lifted_over.vcf \
-     CHAIN=b37tohg38.chain \
-     REJECT=rejected_variants.vcf \
-     R=reference_sequence.fasta
+# pegando apenas o cabeçalho
+zgrep "\#" hg19/WP312.filtered.vcf.gz > header.txt
 ```
+
+```bash
+zgrep -v "\#" hg19/WP312.filtered.vcf.gz | awk '{print("chr"$0)}' > variants.txt
+```
+
+```bash
+cat header.txt variants.txt > WP312.filtered.chr.vcf
+```
+
+2. Fazer download do arquivo completo do genoma hg38.fa
+
+```bash
+# Arquivos com todos os cromossomos
+# https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/
+wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+```
+
+3. Gear o .dict para o hg38.fa.
+
+```bash
+./gatk-4.2.2.0/gatk CreateSequenceDictionary -R hg38.fa -O hg38.dict
+```
+
+4. Rodar o LiftOverVCF do GATK.
+
+```bash
+# lembre que o VCF tem que ser o com chr
+./gatk-4.2.2.0/gatk LiftoverVcf \
+-I WP312.filtered.chr.vcf \
+-O liftOver_WP312_hg19Tohg38.vcf \
+--CHAIN hg19ToHg38.over.chain \
+--REJECT liftOver_Reject_WP312_hg19Tohg38.vcf \
+-R hg38.fa
+```
+
+---
+
 
 
 
