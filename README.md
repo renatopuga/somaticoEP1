@@ -1,5 +1,22 @@
 # Pipeline somático: Exercício 1
 
+# Tempo de Processamento
+
+| Infraestrutura | CPU  | Memória (GB) | Storage (GB) | Etapa             | Tempo           |
+| -------------- | ---- | ------------ | ------------ | ----------------- | --------------- |
+| gitpod         | 16   | 64           | ?DD 30       | FASTQ -> SAM      | 55-61min (chr9) |
+|                |      |              |              | SAM -> BAM        | 13-18min        |
+|                |      |              |              | BAM -> SORT_BAM   | ~6-12min        |
+|                |      |              |              | SORT_BAM -> RMDUP | ~12 min         |
+| servidor local | 16   | 32           | SSD 30       | todas as etapas   | ~2h (hg19)      |
+
+
+# Shotgun e Amplicon
+
+<img width="1438" alt="Screen Shot 2022-10-28 at 22 55 11" src="https://user-images.githubusercontent.com/8321336/198762626-8a788ca0-d5f9-495b-a96b-7ae807ba071b.png">
+
+
+# Workflow
 
 1. **O arquivo no NCBI da amostra WP312 (tumor)**
 
