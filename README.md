@@ -545,16 +545,20 @@ Fiz o download do arquivo `WP312.filtered.pon.vcf.gz` que está o compartilhamen
 
 ```bash
 mkdir hg38-vcf-EP1
+mv WP312.filtered.pon.vcf.gz WP312.filtered.pon.vcf.gz.tbi hg38-vcf-EP1/
 ```
 
 
 
 **Rodar o vcf-compare**
 
+
+- vcf-compare file1.vcf file2.vcf ... fileN.vcf
+- liftOver_WP312_hg19Tohg38.vcf.gz: arquivo que convertemos do hg19 para hg38
+- hg38-vcf-EP1/WP312.filtered.pon.vcf.gz: Arquivo da aula EP01 (primeira parte)
+
+
 ```bash
-# vcf-compare file1.vcf file2.vcf ... fileN.vcf
-# liftOver_WP312_hg19Tohg38.vcf.gz: arquivo que convertemos do hg19 para hg38
-# hg38-vcf-EP1/WP312.filtered.pon.vcf.gz: Arquivo da aula EP01 (primeira parte)
 vcf-compare liftOver_WP312_hg19Tohg38.vcf.gz hg38-vcf-EP1/WP312.filtered.pon.vcf.gz
 ```
 
