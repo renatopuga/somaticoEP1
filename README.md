@@ -484,6 +484,11 @@ cat header.txt variants.txt > WP312.filtered.chr.vcf
 wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 ```
 
+gunzip
+```bash
+gunzip hg38.fa.gz
+```
+
 3. Gear o .dict para o hg38.fa.
 
 ```bash
