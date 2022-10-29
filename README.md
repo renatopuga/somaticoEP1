@@ -465,11 +465,11 @@ gunzip hg19ToHg38.over.chain.gz
 
 ```bash
 # pegando apenas o cabeçalho
-zgrep "\#" hg19/WP312.filtered.vcf.gz > header.txt
+zgrep "\#" WP312.filtered.vcf.gz > header.txt
 ```
 
 ```bash
-zgrep -v "\#" hg19/WP312.filtered.vcf.gz | awk '{print("chr"$0)}' > variants.txt
+zgrep -v "\#" WP312.filtered.vcf.gz | awk '{print("chr"$0)}' > variants.txt
 ```
 
 ```bash
