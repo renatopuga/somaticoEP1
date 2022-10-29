@@ -265,7 +265,7 @@ bedtools coverage -a WP312_sorted_rmdup_merged_sorted.bed \
 
 ```bash
 cat WP312_coverageBed.bed | \
-awk -F "\t" '{if($4>20){print}}' \
+awk -F "\t" '{if($4>=20){print}}' \
 > WP312_coverageBed20x.bed
 ```
 
