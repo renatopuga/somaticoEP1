@@ -302,7 +302,7 @@ unzip gatk-4.2.2.0.zip
 **Converter Bed para Interval_list**
 
 ```bash
-./gatk-4.2.2.0/gatk BedToIntervalList -I WP312_coverageBed30x.bed \
+./gatk-4.2.2.0/gatk BedToIntervalList -I WP312_coverageBed20x.bed \
 -O WP312_coverageBed20x.interval_list -SD chr9.dict
 ```
 
