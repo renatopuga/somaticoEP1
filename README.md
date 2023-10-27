@@ -41,7 +41,6 @@
  	 wget -c https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-ubuntu64.tar.gz
    	 tar -zxvf sratoolkit.3.0.0-ubuntu64.tar.gz
          echo "Aexyo" | sratoolkit.3.0.0-ubuntu64/bin/vdb-config
-   
          ```
 
       2. ```bash
