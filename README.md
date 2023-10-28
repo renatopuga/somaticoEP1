@@ -199,12 +199,12 @@ time samtools index WP312_sorted.bam
 
 ```bash
 # abordagem de target sequencing utilizamos o rmdup para remover duplicata de PCR
-time samtools rmdup WP312_sorted.bam WP312_sorted_rmdup.bam
+time samtools rmdup WP312_sorted.bam WP312_sorted_rmdup_F4.bam
 ```
 
 ```bash
 # indexando o arquivo BAM rmdup
-time samtools index WP312_sorted_rmdup.bam 
+time samtools index WP312_sorted_rmdup_F4.bam 
 ```
 
 
@@ -242,7 +242,7 @@ Google Colab
 **Gerando BED do arquivo BAM**
 
 ```bash
-bedtools bamtobed -i WP312_sorted_rmdup.bam > WP312_sorted_rmdup.bed
+bedtools bamtobed -i WP312_sorted_rmdup_F4.bam > WP312_sorted_rmdup.bed
 ```
 
 ```bash
@@ -259,7 +259,7 @@ bedtools sort -i WP312_sorted_rmdup_merged.bed > WP312_sorted_rmdup_merged_sorte
 
 ```bash
 bedtools coverage -a WP312_sorted_rmdup_merged_sorted.bed \
--b WP312_sorted_rmdup.bam -mean \
+-b WP312_sorted_rmdup_F4.bam -mean \
 > WP312_coverageBed.bed
 ```
 
@@ -316,7 +316,7 @@ unzip gatk-4.2.2.0.zip
 
 ```bash
 ./gatk-4.2.2.0/gatk GetPileupSummaries \
-	-I WP312_sorted_rmdup.bam  \
+	-I WP312_sorted_rmdup_F4.bam  \
 	-V af-only-gnomad.hg38.vcf.gz \
 	-L WP312_coverageBed20x.interval_list \
 	-O WP312.table
@@ -335,7 +335,7 @@ unzip gatk-4.2.2.0.zip
 ```bash
 ./gatk-4.2.2.0/gatk Mutect2 \
   -R chr9.fa \
-  -I WP312_sorted_rmdup.bam \
+  -I WP312_sorted_rmdup_F4.bam \
   --germline-resource af-only-gnomad.hg38.vcf.gz  \
   --panel-of-normals 1000g_pon.hg38.vcf.gz \
   -L WP312_coverageBed20x.interval_list \
