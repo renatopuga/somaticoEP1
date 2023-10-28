@@ -609,7 +609,7 @@ zgrep "^\#\|chr9"  liftOver_WP312_hg19Tohg38.vcf.gz > liftOver_WP312_hg19Tohg38_
 
 Compactar o arquivo VCF com o comando `bgzip`:
 ```bash
-bgzip iftOver_WP312_hg19Tohg38_chr9.vcf
+bgzip liftOver_WP312_hg19Tohg38_chr9.vcf
 ```
 
 Rodar o comando `tabix` para indexar o arquivo VCF compactado:
