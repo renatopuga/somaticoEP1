@@ -600,6 +600,28 @@ SN      Number of lost sites:   2       0.0%    17139   17137   liftOver_WP312_h
 ```
 
 
+## Comparar apenas variantes do chr9
+
+zgrep para separar cabeçalho `#` e variantes do cromossomo 9 do arquivo lifOver:
+```bash
+zgrep "^\#\|chr9"  liftOver_WP312_hg19Tohg38.vcf.gz > liftOver_WP312_hg19Tohg38_chr9.vcf
+```
+
+Compactar o arquivo VCF com o comando `bgzip`:
+```bash
+bgzip iftOver_WP312_hg19Tohg38_chr9.vcf
+```
+
+Rodar o comando `tabix` para indexar o arquivo VCF compactado:
+```bash
+  331  tabix -p vcf liftOver_WP312_hg19Tohg38_chr9.vcf.gz
+```
+
+Fazer nova comparação com o arquivo vcf do liftOver apenas das variantes do chr9:
+```bash
+  333  vcf-compare liftOver_WP312_hg19Tohg38_chr9.vcf.gz hg38-vcf-EP1/WP312.filtered.pon.vcf.gz
+```
+
 
 ## Referências
 
