@@ -174,7 +174,7 @@ parallel-fastq-dump --sra-id SRR8856724 --threads 6 --outdir ./ --split-files --
 ```bash
 NOME=WP312; Biblioteca=Nextera; Plataforma=illumina;
 
-bwa mem -t 10 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" \
+bwa mem -t 16 -M -R "@RG\tID:$NOME\tSM:$NOME\tLB:$Biblioteca\tPL:$Plataforma" \
 chr9.fa \
 SRR8856724_1.fastq.gz \
 SRR8856724_2.fastq.gz > WP312.sam
