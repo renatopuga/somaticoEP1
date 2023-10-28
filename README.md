@@ -257,6 +257,15 @@ bedtools sort -i WP312_sorted_rmdup_merged.bed > WP312_sorted_rmdup_merged_sorte
 
 **Cobertura Média**
 
+Pegando arquivo `view -F4` do BAM WP312.
+
+```bash
+git clone https://github.com/circulosmeos/gdown.pl.git
+./gdown.pl/gdown.pl  https://drive.google.com/file/d/1pTMpZ2eIboPHpiLf22gFIQbXU2Ow26_E/view?usp=drive_link WP312_sorted_rmdup_F4.bam
+./gdown.pl/gdown.pl  https://drive.google.com/file/d/10utrBVW-cyoFPt5g95z1gQYQYTfXM4S7/view?usp=drive_link WP312_sorted_rmdup_F4.bam.bai
+```
+
+
 ```bash
 bedtools coverage -a WP312_sorted_rmdup_merged_sorted.bed \
 -b WP312_sorted_rmdup_F4.bam -mean \
