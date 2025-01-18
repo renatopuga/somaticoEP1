@@ -96,7 +96,7 @@ bedtools coverage -a WP312_sorted_rmdup_merged_sorted.bed \
 -b WP312_sorted_rmdup.bam -mean > WP312_coverageBed.bed
 
 # Filtro por total de reads >=20
-cat WP312_coverageBed.bed | awk -F "\t" '{if($4>20){print}}' > WP312_coverageBed30x.bed
+cat WP312_coverageBed.bed | awk -F "\t" '{if($4>20){print}}' > WP312_coverageBed20x.bed
 
 # GATK4 instalação (MuTect2 com PoN)
 # Download
@@ -112,8 +112,8 @@ unzip gatk-4.2.2.0.zip
 ./gatk-4.2.2.0/gatk ScatterIntervalsByNs -R chr9.fa -O chr9.interval_list -OT ACGT
 
 # Converter Bed para Interval_list
-./gatk-4.2.2.0/gatk BedToIntervalList -I WP312_coverageBed30x.bed \ 
--O WP312_coverageBed30x.interval_list -SD chr9.dict
+./gatk-4.2.2.0/gatk BedToIntervalList -I WP312_coverageBed20x.bed \ 
+-O WP312_coverageBed20x.interval_list -SD chr9.dict
 
 # GATK4 - CalculateContamination
 ./gatk-4.2.2.0/gatk GetPileupSummaries \
@@ -131,7 +131,7 @@ unzip gatk-4.2.2.0.zip
   -I WP312_sorted_rmdup.bam \
   --germline-resource af-only-gnomad.hg38.vcf.gz  \
   --panel-of-normals 1000g_pon.hg38.vcf.gz \
-  -L WP312_coverageBed30x.interval_list \
+  -L WP312_coverageBed20x.interval_list \
   -O WP312.somatic.pon.vcf.gz
 
 # GATK4 - MuTect2 FilterMutectCalls
