@@ -121,7 +121,8 @@ unzip gatk-4.2.2.0.zip
 	-V af-only-gnomad.hg38.vcf.gz \
 	-L chr9.interval_list \
 	-O WP312.table
-./gatk-4.2.2.0/gatk CalculateContamination \ 
+ 
+./gatk-4.2.2.0/gatk CalculateContamination \
 -I WP312.table \
 -O WP312.contamination.table
 
