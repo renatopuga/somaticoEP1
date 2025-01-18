@@ -84,7 +84,7 @@ time samtools index WP312_sorted_rmdup.bam
 
 # Cobertura - make BED files
 # Instalação do bedtools
-brew install bedtoools
+brew install bedtools
 
 # Gerando BED do arquivo BAM
 bedtools bamtobed -i WP312_sorted_rmdup.bam > WP312_sorted_rmdup.bed
